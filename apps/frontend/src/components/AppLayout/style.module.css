@@ -1,0 +1,61 @@
+.header {
+  position: sticky;
+  z-index: var(--z-sticky);
+  top: 0;
+  height: var(--header-height);
+  background: var(--color-surface);
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.headerInner {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--spacing-page);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-text-primary);
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+}
+
+.brand:hover {
+  text-decoration: none;
+}
+
+.logo {
+  display: grid;
+  place-items: center;
+  width: var(--space-8);
+  height: var(--space-8);
+  border-radius: var(--radius-md);
+  background: var(--color-action-primary);
+  color: var(--color-text-inverse);
+}
+
+.main {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--space-6) var(--spacing-page) var(--space-12);
+}
+
+.skip {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  z-index: var(--z-toast);
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-surface);
+  border-radius: var(--radius-control);
+  transform: translateY(-200%);
+}
+
+.skip:focus {
+  transform: none;
+}

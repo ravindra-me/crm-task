@@ -1,0 +1,20 @@
+{
+  "name": "crm-contact-workspace",
+  "private": true,
+  "workspaces": [
+    "apps/frontend"
+  ],
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "dev": "nx run-many -t serve -p backend frontend",
+    "db:up": "nx run backend:db-up",
+    "db:down": "docker compose -f apps/backend/docker-compose.yml down",
+    "db:shell": "docker compose -f apps/backend/docker-compose.yml exec db psql -U crm crm",
+    "test": "nx run-many -t test",
+    "check": "nx run-many -t lint typecheck test build",
+    "e2e": "nx run frontend:e2e"
+  },
+  "devDependencies": {
+    "nx": "^23.3.0"
+  }
+}

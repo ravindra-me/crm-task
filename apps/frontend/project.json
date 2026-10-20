@@ -1,0 +1,40 @@
+{
+  "name": "frontend",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/frontend/src",
+  "targets": {
+    "serve": {
+      "command": "vite",
+      "options": { "cwd": "apps/frontend" },
+      "dependsOn": [{ "projects": ["backend"], "target": "serve" }],
+      "continuous": true
+    },
+    "build": {
+      "command": "tsc -b && vite build",
+      "options": { "cwd": "apps/frontend" },
+      "outputs": ["{projectRoot}/dist"]
+    },
+    "test": {
+      "command": "vitest run",
+      "options": { "cwd": "apps/frontend" }
+    },
+    "lint": {
+      "command": "eslint .",
+      "options": { "cwd": "apps/frontend" }
+    },
+    "typecheck": {
+      "command": "tsc -b",
+      "options": { "cwd": "apps/frontend" }
+    },
+    "format-check": {
+      "command": "prettier --check .",
+      "options": { "cwd": "apps/frontend" }
+    },
+    "e2e": {
+      "command": "playwright test",
+      "options": { "cwd": "apps/frontend" },
+      "dependsOn": [{ "projects": ["backend"], "target": "seed" }]
+    }
+  }
+}

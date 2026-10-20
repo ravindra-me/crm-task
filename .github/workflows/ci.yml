@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+
+      - run: npm ci
+
+      - name: Create the backend .env (throwaway password for this run only)
+        run: |
+          cat > apps/backend/.env <<EOF
+          POSTGRES_USER=crm
+          POSTGRES_PASSWORD=$(openssl rand -hex 16)
+          POSTGRES_DB=crm
+          DB_HOST=localhost
+          DB_PORT=5433
+          BACKEND_PORT=8000
+          EOF
+
+      - run: npm run setup
+
+      - name: Lint, type check, unit tests and build
+        run: npx nx run-many -t lint typecheck format-check test build
+
+      - name: End-to-end tests
+        run: |
+          npx playwright install --with-deps chromium
+          npx nx e2e frontend
+        env:
+          CI: true

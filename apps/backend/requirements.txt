@@ -1,0 +1,18 @@
+# Backend packages, for pip:  pip install -r requirements.txt
+# pip installs what these depend on automatically.
+# Keep in line with pyproject.toml (a test checks this).
+
+# The API
+alembic==1.20.0
+email-validator==2.3.0
+fastapi==0.148.0
+psycopg[binary]==3.3.6
+pydantic-settings==2.16.0
+sqlalchemy==2.1.5
+uvicorn[standard]==0.54.0
+
+# Tests, linting and type checks
+httpx==0.28.1
+mypy==2.4.0
+pytest==9.1.1
+ruff==0.17.1

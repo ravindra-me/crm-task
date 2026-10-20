@@ -1,0 +1,19 @@
+.control {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.select {
+  composes: input from '../Input/style.module.css';
+  appearance: none;
+  padding-right: var(--space-8);
+  cursor: pointer;
+}
+
+.chevron {
+  position: absolute;
+  right: var(--space-3);
+  color: var(--color-text-muted);
+  pointer-events: none;
+}

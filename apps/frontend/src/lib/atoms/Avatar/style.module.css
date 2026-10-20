@@ -1,0 +1,22 @@
+.avatar {
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: var(--radius-full);
+  background: var(--color-tag-bg);
+  color: var(--color-tag-text);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+}
+
+.sm {
+  width: var(--space-8);
+  height: var(--space-8);
+  font-size: var(--text-xs);
+}
+
+.lg {
+  width: var(--space-12);
+  height: var(--space-12);
+  font-size: var(--text-base);
+}

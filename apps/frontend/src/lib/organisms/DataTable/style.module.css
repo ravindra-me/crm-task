@@ -1,0 +1,126 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  transition: opacity var(--duration-normal) var(--easing-standard);
+}
+
+.refreshing {
+  opacity: 0.6;
+}
+
+.headerCell {
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface-muted);
+  border-bottom: var(--border-width) solid var(--color-border);
+  color: var(--color-text-secondary);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.sortButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+}
+
+.sortButton:hover,
+.sorted .sortButton {
+  color: var(--color-text-primary);
+}
+
+.sortIcon {
+  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--easing-standard);
+}
+
+.sortButton:hover .sortIcon,
+.sortButton:focus-visible .sortIcon,
+.sorted .sortIcon {
+  opacity: 1;
+}
+
+.sorted .sortIcon {
+  color: var(--color-action-primary);
+}
+
+.cell {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: var(--border-width) solid var(--color-border);
+  vertical-align: middle;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.row:last-child .cell {
+  border-bottom: 0;
+}
+
+.row:hover {
+  background: var(--color-surface-hover);
+}
+
+.row[data-selected='true'] {
+  background: var(--color-surface-selected);
+}
+
+@media (max-width: 64rem) {
+  .table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  .table,
+  .table tbody {
+    display: block;
+  }
+
+  .table .row {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: var(--space-3);
+    row-gap: var(--space-2);
+    padding: var(--space-4);
+    border-bottom: var(--border-width) solid var(--color-border);
+  }
+
+  .table .row:last-child {
+    border-bottom: 0;
+  }
+
+  .table .cell {
+    display: block;
+    grid-column: 2;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    padding: 0;
+    border: 0;
+    white-space: normal;
+  }
+
+  .table .cell[data-mobile='aside'] {
+    grid-column: 1;
+    padding-top: var(--space-2);
+  }
+
+  .table .cell[data-mobile='hide'] {
+    display: none;
+  }
+}

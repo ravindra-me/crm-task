@@ -1,0 +1,53 @@
+.toolbar {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.row > * {
+  flex: 1 1 10rem;
+}
+
+.actions {
+  display: flex;
+}
+
+.actions button {
+  flex: 1;
+}
+
+@media (min-width: 64rem) {
+  .toolbar {
+    grid-template-columns: minmax(16rem, 2fr) 3fr;
+  }
+
+  .row {
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+  }
+
+  .row > * {
+    flex: 0 0 auto;
+  }
+
+  .company {
+    width: 12rem;
+  }
+
+  .sortOnMobile {
+    display: none;
+  }
+
+  .actions {
+    padding-left: var(--space-2);
+    margin-left: var(--space-1);
+    border-left: var(--border-width) solid var(--color-border);
+  }
+}
